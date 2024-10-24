@@ -1,7 +1,7 @@
 # Almatar Core SDK
 
 ## Overview
-Easy way to integrate with the Almatar system to launch the flights and hotels reservation flow.
+Easy way to integrate with Almatar system to launch the flights and hotels reservation flow.
 
 ## Installation Instructions
 
@@ -42,7 +42,7 @@ Easy way to integrate with the Almatar system to launch the flights and hotels r
     implementation 'com.github.almatar-core:almatar-sdk:replace_with_version'
     ```
 
-5. Open your application class and initialize the Almatar SDK:
+5. Open your application class and initialize Almatar SDK:
 
     ```kotlin
     override fun onCreate() {
