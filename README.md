@@ -8,9 +8,13 @@ Easy way to integrate with the Almatar system to launch the flights and hotels r
 1. Open your `AndroidManifest.xml` file and make sure you add a valid google API_KEY:
 
     ```xml
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="<replace with your google API KEY>" />
+        <application>
+
+              <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="<replace with your google API KEY>" />
+
+        />
     ```
 
 2. Open your `gradle.properties` file and add the authToken provided by Almatar:
