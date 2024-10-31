@@ -47,16 +47,54 @@ Easy way to integrate with Almatar system to launch the flights and hotels reser
     ```kotlin
     override fun onCreate() {
         super.onCreate()
-        AlmatarAppInitializer.init(this)
+        AlmatarAppInitializer.init(application = this, debugMode = BuildConfig.DEBUG)
     }
     ```
 
 Now you can launch Almatar flight flow by calling this function:
 ```kotlin
-AlmatarAppInitializer.launchFlights()
+AlmatarAppInitializer.launchFlights(
+                almatarFlowFinishedCallback = {
+                    val intent = Intent(context, Splashscreen::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context?.startActivity(intent)
+                    (context as? ComponentActivity)?.finish()
+                },
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                },
+                startPaymentFlowImpl = { bookingId, amount, productType, callback ->
+                    callback(
+                        true, // payment status
+                         "" // payment error message
+                    )
+                },
+            )
 ```
 
 Or launch Almatar hotel flow by calling this function:
 ```kotlin
-AlmatarAppInitializer.launchHotels()
+AlmatarAppInitializer.launchHotels(
+                almatarFlowFinishedCallback = {
+                    val intent = Intent(context, Splashscreen::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context?.startActivity(intent)
+                    (context as? ComponentActivity)?.finish()
+                },
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                },
+                startPaymentFlowImpl = { bookingId, amount, productType, callback ->
+                    callback(
+                        true, // payment status
+                         "" // payment error message
+                    )
+                },
+            )
 ```
