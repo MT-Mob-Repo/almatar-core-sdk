@@ -39,7 +39,7 @@ Easy way to integrate with Almatar system to launch the flights and hotels reser
 4. Open your `build.gradle` (Module: app) file and add the following dependency, then sync your project:
 
     ```groovy
-    implementation 'com.github.almatar-core:almatar-sdk:replace_with_version'
+    implementation 'com.github.MT-Mob-Repo:almatar-sdk:replace_with_version'
     ```
 
 5. Open your application class and initialize Almatar SDK:
