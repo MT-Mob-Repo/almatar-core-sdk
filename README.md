@@ -98,3 +98,22 @@ AlmatarAppInitializer.launchHotels(
                 },
             )
 ```
+
+to launch Almatar trips history (completed and upcoming) flow call this function:
+```kotlin
+AlmatarAppInitializer.launchBookings(
+                almatarFlowFinishedCallback = {
+                    val intent = Intent(context, Splashscreen::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context?.startActivity(intent)
+                    (context as? ComponentActivity)?.finish()
+                },
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                },
+                
+            )
+```
