@@ -130,6 +130,6 @@ AlmatarAppInitializer.launchBookings(
 -keep class * implements android.graphics.drawable.Drawable { *; }
 -keepclassmembers class * implements android.graphics.drawable.Drawable { *; }
 
-# Keep all public methods in your library (in case you're using reflection)
+# Keep all public methods 
 -keepclassmembers class com.almatar.** { public *; }
 ```
