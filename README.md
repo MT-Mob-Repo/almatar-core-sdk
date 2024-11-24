@@ -47,7 +47,8 @@ Easy way to integrate with Almatar system to launch the flights and hotels reser
     ```kotlin
     override fun onCreate() {
         super.onCreate()
-        AlmatarAppInitializer.init(application = this, almatarEnvironment = if (BuildConfig.DEBUG) AlmatarEnvironment.Development else AlmatarEnvironment.Production)
+        // or use AlmatarEnvironment.Production to use production env.
+        AlmatarAppInitializer.init(application = this, almatarEnvironment = AlmatarEnvironment.Development)
     }
     ```
 
