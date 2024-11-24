@@ -47,7 +47,7 @@ Easy way to integrate with Almatar system to launch the flights and hotels reser
     ```kotlin
     override fun onCreate() {
         super.onCreate()
-        AlmatarAppInitializer.init(application = this, debugMode = BuildConfig.DEBUG)
+        AlmatarAppInitializer.init(application = this, almatarEnvironment = if (BuildConfig.DEBUG) AlmatarEnvironment.Development else AlmatarEnvironment.Production)
     }
     ```
 
@@ -130,6 +130,19 @@ AlmatarAppInitializer.launchBookings(
 -keep class * implements android.graphics.drawable.Drawable { *; }
 -keepclassmembers class * implements android.graphics.drawable.Drawable { *; }
 
-# Keep all public methods 
+# Keep all public methods
 -keepclassmembers class com.almatar.** { public *; }
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.almatar.model.** { <fields>; }
+
+# Retain generic signatures of TypeToken and its subclasses with R8 version 3.0 and higher.
+-keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
+-keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken
+
+
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
 ```
