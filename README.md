@@ -117,3 +117,19 @@ AlmatarAppInitializer.launchBookings(
                 
             )
 ```
+
+** Note: if you plan to use proguard rules, add the following to your app proguard file: 
+```kotlin
+# Keep all public classes in the com.almatar package (and subpackages)
+-keep class com.almatar.** { *; }
+
+# Keep all inner classes in the R$* (this is important for resources like drawables)
+-keep class com.almatar.R$* { *; }
+
+# Keep drawable resources (this includes images, shapes, etc.)
+-keep class * implements android.graphics.drawable.Drawable { *; }
+-keepclassmembers class * implements android.graphics.drawable.Drawable { *; }
+
+# Keep all public methods in your library (in case you're using reflection)
+-keepclassmembers class com.almatar.** { public *; }
+```
