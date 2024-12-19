@@ -55,6 +55,7 @@ Easy way to integrate with Almatar system to launch the flights and hotels reser
 Now you can launch Almatar flight flow by calling this function:
 ```kotlin
 AlmatarAppInitializer.launchFlights(
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC
                 almatarFlowFinishedCallback = {
                     val intent = Intent(context, Splashscreen::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -79,6 +80,7 @@ AlmatarAppInitializer.launchFlights(
 Or launch Almatar hotel flow by calling this function:
 ```kotlin
 AlmatarAppInitializer.launchHotels(
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC
                 almatarFlowFinishedCallback = {
                     val intent = Intent(context, Splashscreen::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -103,6 +105,7 @@ AlmatarAppInitializer.launchHotels(
 to launch Almatar trips history (completed and upcoming) flow call this function:
 ```kotlin
 AlmatarAppInitializer.launchBookings(
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC
                 almatarFlowFinishedCallback = {
                     val intent = Intent(context, Splashscreen::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
