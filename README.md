@@ -57,10 +57,7 @@ Now you can launch Almatar flight flow by calling this function:
 AlmatarAppInitializer.launchFlights(
                 locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC
                 almatarFlowFinishedCallback = {
-                    val intent = Intent(context, Splashscreen::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context?.startActivity(intent)
-                    (context as? ComponentActivity)?.finish()
+                    // will be called when Almatar SDK flow is closed
                 },
                 generateTokenImpl = { callback ->
                     callback(
@@ -82,10 +79,7 @@ Or launch Almatar hotel flow by calling this function:
 AlmatarAppInitializer.launchHotels(
                 locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC
                 almatarFlowFinishedCallback = {
-                    val intent = Intent(context, Splashscreen::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context?.startActivity(intent)
-                    (context as? ComponentActivity)?.finish()
+                    // will be called when Almatar SDK flow is closed
                 },
                 generateTokenImpl = { callback ->
                     callback(
@@ -107,10 +101,7 @@ to launch Almatar trips history (completed and upcoming) flow call this function
 AlmatarAppInitializer.launchBookings(
                 locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC
                 almatarFlowFinishedCallback = {
-                    val intent = Intent(context, Splashscreen::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context?.startActivity(intent)
-                    (context as? ComponentActivity)?.finish()
+                    // will be called when Almatar SDK flow is closed
                 },
                 generateTokenImpl = { callback ->
                     callback(
@@ -119,6 +110,42 @@ AlmatarAppInitializer.launchBookings(
                     )
                 },
                 
+            )
+```
+
+to launch Almatar Hajj flow call this function:
+```kotlin
+AlmatarAppInitializer.launchHajjFlow(
+                departureDate = 1739491200000, //In Milliseconds
+                returnDate = 1739836800000, //In Milliseconds
+                passengers = listOf(
+                    PassengerData(
+                        title = PassengerTitle.Mr, //PassengerTitle.Mr or PassengerTitle.Mrs or PassengerTitle.Ms
+                        firstName = "John",
+                        lastName = "Doe",
+                        birthDate = 856026800000,
+                        nationality = "EG",
+                        phoneNumberCountryCode = 966, // required for the first passenger only
+                        phoneNumber = "555555555", // required for first passenger only
+                        email = "johndoe@email.com", // required for first passenger only
+                        documentType = PassengerDocumentType.NationalID, //Supports only PassengerTitle.NationalId and PassengerTitle.Iqama
+                        documentNumber = "1234567890",
+                        documentExpirationDate = 1773804800000
+                    )
+                ),
+                almatarFlowFinishedCallback = {
+                    // will be called when Almatar SDK flow is closed
+                },
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                },
+                startPaymentFlowImpl = { bookingId ->
+                    //Start payment flow
+                },
             )
 ```
 
