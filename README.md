@@ -116,36 +116,57 @@ AlmatarAppInitializer.launchBookings(
 to launch Almatar Hajj flow call this function:
 ```kotlin
 AlmatarAppInitializer.launchHajjFlow(
-                departureDate = 1739491200000, //In Milliseconds
-                returnDate = 1739836800000, //In Milliseconds
-                passengers = listOf(
-                    PassengerData(
-                        title = PassengerTitle.Mr, //PassengerTitle.Mr or PassengerTitle.Mrs or PassengerTitle.Ms
-                        firstName = "John",
-                        lastName = "Doe",
-                        birthDate = 856026800000,
-                        nationality = "EG",
-                        phoneNumberCountryCode = 966, // required for the first passenger only
-                        phoneNumber = "555555555", // required for first passenger only
-                        email = "johndoe@email.com", // required for first passenger only
-                        documentType = PassengerDocumentType.NationalID, //Supports only PassengerTitle.NationalId and PassengerTitle.Iqama
-                        documentNumber = "1234567890",
-                        documentExpirationDate = 1773804800000
+                HajjData(
+                    departureDateFrom = 1739491200000, //In Milliseconds
+                    departureDateTo = 1739491200000, //In Milliseconds
+                    arrivalDateFrom = 1739836800000, //In Milliseconds
+                    arrivalDateTo = 1739836800000, //In Milliseconds
+                    passengers = listOf(
+                        PassengerData(
+                            title = PassengerTitle.Mr, //PassengerTitle.Mr or PassengerTitle.Mrs or PassengerTitle.Ms
+                            firstName = "John",
+                            lastName = "Doe",
+                            birthDate = 856026800000,
+                            nationality = "EG",
+                            phoneNumberCountryCode = 966, // required for the first passenger only
+                            phoneNumber = "555555555", // required for first passenger only
+                            email = "johndoe@email.com", // required for first passenger only
+                            documentType = PassengerDocumentType.NationalID, //Supports only PassengerTitle.NationalId and PassengerTitle.Iqama
+                            documentNumber = "1234567890",
+                            documentExpirationDate = 1773804800000
+                        )
                     )
                 ),
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
                 almatarFlowFinishedCallback = {
                     // will be called when Almatar SDK flow is closed
                 },
-                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
                 generateTokenImpl = { callback ->
                     callback(
                         "<replace with your token>",
                         "" //error message incase of any failure in generate 
                     )
                 },
-                startPaymentFlowImpl = { bookingId ->
+                startPaymentFlowImpl = { bookingId /*Use for payment flow*/, bookingKey /*Use for confirmation summary*/ ->
                     //Start payment flow
+                }
+            )
+```
+
+to launch Almatar Hajj Confirmation screen call this function:
+```kotlin
+AlmatarAppInitializer.launchHajjConfirmationFlow(
+                bookingKey = "",
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
+                almatarFlowFinishedCallback = {
+                    // will be called when Almatar SDK flow is closed
                 },
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                }
             )
 ```
 
