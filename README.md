@@ -135,7 +135,8 @@ AlmatarAppInitializer.launchHajjFlow(
                             documentNumber = "1234567890",
                             documentExpirationDate = 1773804800000
                         )
-                    )
+                    ),
+                    supportedCity = HajjSupportedCities.Jeddah // HajjSupportedCities.Jeddah, HajjSupportedCities.Taif or HajjSupportedCities.Both
                 ),
                 locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
                 almatarFlowFinishedCallback = {
@@ -147,7 +148,7 @@ AlmatarAppInitializer.launchHajjFlow(
                         "" //error message incase of any failure in generate 
                     )
                 },
-                startPaymentFlowImpl = { bookingId /*Use for payment flow*/, bookingKey /*Use for confirmation summary*/ ->
+                startPaymentFlowImpl = { bookingId /*Use for payment flow*/, amount, bookingKey /*Use for confirmation summary*/, legsData ->
                     //Start payment flow
                 }
             )
