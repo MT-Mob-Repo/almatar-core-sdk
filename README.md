@@ -117,10 +117,14 @@ to launch Almatar Hajj flow call this function:
 ```kotlin
 AlmatarAppInitializer.launchHajjFlow(
                 HajjData(
-                    departureDateFrom = 1739491200000, //In Milliseconds
-                    departureDateTo = 1739491200000, //In Milliseconds
-                    arrivalDateFrom = 1739836800000, //In Milliseconds
-                    arrivalDateTo = 1739836800000, //In Milliseconds
+                    jeddahOnwardDateFrom = 1743465600000, //In Milliseconds
+                    jeddahOnwardDateTo = 1743692400000, //In Milliseconds
+                    jeddahReturnDateFrom = 1744203600000, //In Milliseconds
+                    jeddahReturnDateTo = 1744329600000, //In Milliseconds
+                    taifOnwardDateFrom = 1743552000000, //In Milliseconds
+                    taifOnwardDateTo = 1743778800000, //In Milliseconds
+                    taifReturnDateFrom = 1744290000000, //In Milliseconds
+                    taifReturnDateTo = 1744416000000, //In Milliseconds
                     passengers = listOf(
                         PassengerData(
                             title = PassengerTitle.Mr, //PassengerTitle.Mr or PassengerTitle.Mrs or PassengerTitle.Ms
