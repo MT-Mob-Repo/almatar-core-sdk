@@ -117,14 +117,14 @@ to launch Almatar Hajj flow call this function:
 ```kotlin
 AlmatarAppInitializer.launchHajjFlow(
                 HajjData(
-                    jeddahOnwardDateFrom = 1743465600000, //In Milliseconds
-                    jeddahOnwardDateTo = 1743692400000, //In Milliseconds
-                    jeddahReturnDateFrom = 1744203600000, //In Milliseconds
-                    jeddahReturnDateTo = 1744329600000, //In Milliseconds
-                    taifOnwardDateFrom = 1743552000000, //In Milliseconds
-                    taifOnwardDateTo = 1743778800000, //In Milliseconds
-                    taifReturnDateFrom = 1744290000000, //In Milliseconds
-                    taifReturnDateTo = 1744416000000, //In Milliseconds
+                    jeddahOnwardDateFrom = 1743465600000, //Minimum travel date to Jeddah
+                    jeddahOnwardDateTo = 1743692400000, //Maximum travel date time to Jeddah (Latest allowed time to catch the bus)
+                    jeddahReturnDateFrom = 1744203600000, //Minimum return date time from Jeddah (Earliest allowed time to catch the bus)
+                    jeddahReturnDateTo = 1744329600000, ///Maximum return date from Jeddah
+                    taifOnwardDateFrom = 1743552000000, ///Minimum travel date to Taif
+                    taifOnwardDateTo = 1743778800000, //Maximum travel date time to Taif (Latest allowed time to catch the bus)
+                    taifReturnDateFrom = 1744290000000, //Minimum return date time from Taif (Earliest allowed time to catch the bus)
+                    taifReturnDateTo = 1744416000000, //Maximum return date from Taif
                     passengers = listOf(
                         PassengerData(
                             title = PassengerTitle.Mr, //PassengerTitle.Mr or PassengerTitle.Mrs or PassengerTitle.Ms
