@@ -135,7 +135,7 @@ AlmatarAppInitializer.launchHajjFlow(
                             phoneNumberCountryCode = 966, // required for the first passenger only
                             phoneNumber = "555555555", // required for first passenger only
                             email = "johndoe@email.com", // required for first passenger only
-                            documentType = PassengerDocumentType.NationalID, //Supports only PassengerTitle.NationalId and PassengerTitle.Iqama
+                            documentType = PassengerDocumentType.NationalID, //Supports only PassengerDocumentType.NationalId and PassengerDocumentType.Iqama
                             documentNumber = "1234567890",
                             documentExpirationDate = 1773804800000
                         )
@@ -171,6 +171,45 @@ AlmatarAppInitializer.launchHajjConfirmationFlow(
                         "<replace with your token>",
                         "" //error message incase of any failure in generate 
                     )
+                }
+            )
+```
+
+to launch Almatar Umrah Packages Flight flow call this function:
+```kotlin
+AlmatarAppInitializer.launchUmrahPackagesFlightsFlow(
+                UmrahFlightData(
+                    onwardDateFrom = 1743465600000, //Minimum travel date
+                    onwardDateTo = 1743692400000, //Maximum travel date
+                    returnDateFrom = 1744203600000, //Minimum return date
+                    returnDateTo = 1744329600000, ///Maximum return date 
+                    passenger = PassengerData(
+                            title = PassengerTitle.Mr, //PassengerTitle.Mr or PassengerTitle.Mrs or PassengerTitle.Ms
+                            firstName = "John",
+                            lastName = "Doe",
+                            birthDate = 856026800000,
+                            nationality = "EG",
+                            phoneNumberCountryCode = 966,
+                            phoneNumber = "555555555",
+                            email = "johndoe@email.com",
+                            documentType = PassengerDocumentType.NationalID, //Supports PassengerDocumentType.Passport, PassengerDocumentType.NationalId and PassengerDocumentType.Iqama
+                            documentNumber = "1234567890",
+                            documentExpirationDate = 1773804800000
+                    ),
+                    destination = UmrahPackagesFlightsDestinations.Jeddah // Jeddah, Madinah, Taif, Yanbo or All
+                ),
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
+                almatarFlowFinishedCallback = {
+                    // will be called when Almatar SDK flow is closed
+                },
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                },
+                startPaymentFlowImpl = { bookingId /*Use for payment flow*/, amount, bookingKey /*Use for confirmation summary*/, legsData ->
+                    //Start payment flow
                 }
             )
 ```
