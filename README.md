@@ -250,7 +250,7 @@ AlmatarAppInitializer.launchUmrahPackagesFlightsFlow(
             )
 ```
 
-to launch Almatar Umrah Packages Hotel Confirmation screen call this function:
+to launch Almatar Umrah Packages Flight Confirmation screen call this function:
 ```kotlin
 AlmatarAppInitializer.launchUmrahFlightConfirmation(
                 bookingKey = "",
@@ -267,7 +267,7 @@ AlmatarAppInitializer.launchUmrahFlightConfirmation(
             )
 ```
 
-to launch Almatar Umrah Packages Flight Confirmation screen call this function:
+to launch Almatar Umrah Packages Hotel Confirmation screen call this function:
 ```kotlin
 AlmatarAppInitializer.launchUmrahHotelConfirmation(
                 publicKey = "",
