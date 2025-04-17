@@ -214,6 +214,76 @@ AlmatarAppInitializer.launchUmrahPackagesFlightsFlow(
             )
 ```
 
+to launch Almatar Umrah Packages Hotel flow call this function:
+```kotlin
+AlmatarAppInitializer.launchUmrahPackagesFlightsFlow(
+                UmrahHotelData(
+                            checkInDateFrom = 1745884800000, // Check In Date Range Start
+                            checkInDateTo = 1745884800000, // Check In Date Range End
+                            checkOutDateFrom = 1745971200000, // Check Out Date Range Start
+                            checkOutDateTo = 1745971200000, // Check Out Date Range End
+                            guest = GuestData(
+                                title = GuestTitle.Mr, //GuestTitle.Mr or GuestTitle.Mrs or GuestTitle.Ms
+                                firstName = "MOHAMMAD",
+                                lastName = "AHMED",
+                                birthDate = 788911200000,
+                                nationality = "SA",
+                                phoneNumberCountryCode = 966,
+                                phoneNumber = "563142124",
+                                email = "ASDFDFFFFGGH@FHJGHJJ.COM"
+                            ),
+                            destination = UmrahPackagesHotelsDestinations.Both // Makkah, Madinah or Both
+                        ),
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
+                almatarFlowFinishedCallback = {
+                    // will be called when Almatar SDK flow is closed
+                },
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                },
+                startPaymentFlowImpl = { bookingId /*Use for payment flow*/, amount, publicKey /*Use for confirmation summary*/, hotelData ->
+                    //Start payment flow
+                }
+            )
+```
+
+to launch Almatar Umrah Packages Hotel Confirmation screen call this function:
+```kotlin
+AlmatarAppInitializer.launchUmrahFlightConfirmation(
+                bookingKey = "",
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
+                almatarFlowFinishedCallback = {
+                    // will be called when Almatar SDK flow is closed
+                },
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                }
+            )
+```
+
+to launch Almatar Umrah Packages Flight Confirmation screen call this function:
+```kotlin
+AlmatarAppInitializer.launchUmrahHotelConfirmation(
+                publicKey = "",
+                locale = Config.LOCALE.ARABIC, //Use your preferred locale: Config.LOCALE.ENGLISH or Config.LOCALE.ARABIC,
+                almatarFlowFinishedCallback = {
+                    // will be called when Almatar SDK flow is closed
+                },
+                generateTokenImpl = { callback ->
+                    callback(
+                        "<replace with your token>",
+                        "" //error message incase of any failure in generate 
+                    )
+                }
+            )
+```
+
 ** Note: if you plan to use proguard rules, add the following to your app proguard file: 
 ```kotlin
 # Keep all public classes in the com.almatar package (and subpackages)
