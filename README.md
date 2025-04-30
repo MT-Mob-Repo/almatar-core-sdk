@@ -216,7 +216,7 @@ AlmatarAppInitializer.launchUmrahPackagesFlightsFlow(
 
 to launch Almatar Umrah Packages Hotel flow call this function:
 ```kotlin
-AlmatarAppInitializer.launchUmrahPackagesFlightsFlow(
+AlmatarAppInitializer.launchUmrahPackagesHotelsFlow(
                 UmrahHotelData(
                             checkInDateFrom = 1745884800000, // Check In Date Range Start
                             checkInDateTo = 1745884800000, // Check In Date Range End
